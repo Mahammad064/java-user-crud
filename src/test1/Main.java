@@ -42,33 +42,49 @@ public class Main {
                     System.out.println("===============================");
                     break;
                 case 3:
-                    System.out.print("Enter ID: ");
-                    System.out.println(
-                            userService.getUserById(scanner.nextLong()));
-                    scanner.nextLine();
-                    System.out.println("===============================");
+                    try {
+                        System.out.print("Enter ID: ");
+                        System.out.println(
+                                userService.getUserById(scanner.nextLong()));
+                        scanner.nextLine();
+                        System.out.println("===============================");
+                    } catch (UserNotFoundException e){
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case 4:
-                    System.out.print("ID: ");
-                    long id = scanner.nextLong();
-                    scanner.nextLine();
-                    System.out.print("New first name: ");
-                    fname = scanner.nextLine();
-                    System.out.print("New last name: ");
-                    lname = scanner.nextLine();
-                    System.out.print("New email: ");
-                    email = scanner.nextLine();
+                    try {
+                        System.out.print("ID: ");
+                        long id = scanner.nextLong();
+                        scanner.nextLine();
+                        userService.findUserByIdOrThrow(id);
 
-                    System.out.println(
-                            userService.updateUser(id, fname, lname, email));
-                    System.out.println("===============================");
+
+                        System.out.print("New first name: ");
+                        fname = scanner.nextLine();
+                        System.out.print("New last name: ");
+                        lname = scanner.nextLine();
+                        System.out.print("New email: ");
+                        email = scanner.nextLine();
+
+                        System.out.println(
+                                userService.updateUser(id, fname, lname, email));
+                        System.out.println("===============================");
+                    } catch (UserNotFoundException e){
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case 5:
-                    System.out.print("Enter ID: ");
-                    System.out.println(
-                            userService.deleteUser(scanner.nextLong()) ? "Deleted" : "User not found");
-                    scanner.nextLine();
-                    System.out.println("===============================");
+                    try {
+                        System.out.print("Enter ID: ");
+                        System.out.println(
+                                userService.deleteUser(scanner.nextLong()));
+//                                userService.deleteUser(scanner.nextLong()) ? "Deleted" : "User not found");
+                        scanner.nextLine();
+                        System.out.println("===============================");
+                    } catch (UserNotFoundException e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 default:
                     System.out.print("WRONG INPUT. Choose one of actions above!!!!");

@@ -20,7 +20,7 @@ public class UserService {
                 return user;
             }
         }
-        return null;
+        throw new UserNotFoundException("User with ID: " + id + " not found");
     }
 
     public List<User> getAllUsers() {
@@ -36,10 +36,23 @@ public class UserService {
                 return user;
             }
         }
-        return null;
+        throw new UserNotFoundException("User with id " + id + " not found");
     }
 
     public boolean deleteUser(long id){
-        return users.removeIf(user -> user.getId() == id);
+        boolean deleted = users.removeIf(user -> user.getId() == id);
+        if (!deleted){
+            throw new UserNotFoundException("User with id " + id + " not found");
+        } else
+            return true;
+    }
+
+    public User findUserByIdOrThrow(long id){
+        for (User user:users){
+            if (user.getId() == id){
+                return user;
+            }
+        }
+        throw new UserNotFoundException("User with id " + id + " not found");
     }
 }
