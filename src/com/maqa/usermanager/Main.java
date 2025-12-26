@@ -1,6 +1,5 @@
-package test1;
+package com.maqa.usermanager;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
@@ -57,16 +56,13 @@ public class Main {
                         System.out.print("ID: ");
                         long id = scanner.nextLong();
                         scanner.nextLine();
-                        userService.findUserByIdOrThrow(id);
-
-
+                        userService.getUserById(id);
                         System.out.print("New first name: ");
                         fname = scanner.nextLine();
                         System.out.print("New last name: ");
                         lname = scanner.nextLine();
                         System.out.print("New email: ");
                         email = scanner.nextLine();
-
                         System.out.println(
                                 userService.updateUser(id, fname, lname, email));
                         System.out.println("===============================");
@@ -78,8 +74,8 @@ public class Main {
                     try {
                         System.out.print("Enter ID: ");
                         System.out.println(
-                                userService.deleteUser(scanner.nextLong()));
-//                                userService.deleteUser(scanner.nextLong()) ? "Deleted" : "User not found");
+  //                              userService.deleteUser(scanner.nextLong()));
+                              userService.deleteUser(scanner.nextLong()) ? "Deleted" : "User not found");
                         scanner.nextLine();
                         System.out.println("===============================");
                     } catch (UserNotFoundException e) {

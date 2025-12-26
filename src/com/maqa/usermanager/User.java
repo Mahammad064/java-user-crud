@@ -1,49 +1,53 @@
-package test1;
+package com.maqa.usermanager;
 
 public class User {
 
-    public User(long id, String firstname, String lastName, String email){
+    public User() {
+
+    }
+
+    public User(long id, String firstName, String lastName, String email) {
         this.id = id;
-        this.firstname = firstname;
+        this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
     }
 
     private long id;
-    private String firstname;
+    private String firstName;
     private String lastName;
     private String email;
 
 
-    public long getId(){
+    public long getId() {
         return id;
     }
 
-    public String getFirstname(){
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getLastName(){
+    public String getLastName() {
         return lastName;
     }
 
-    public String getEmail(){
+    public String getEmail() {
         return email;
     }
 
-    public void setId(long id){
+    public void setId(long id) {
         this.id = id;
     }
 
-    public void setFirstname(String firstname){
-        this.firstname = firstname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setLastName(String lastName){
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public void setEmail(String email){
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -51,7 +55,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", firstname='" + firstname + '\'' +
+                ", firstname='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 '}';

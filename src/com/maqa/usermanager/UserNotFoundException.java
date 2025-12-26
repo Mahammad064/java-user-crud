@@ -1,4 +1,4 @@
-package test1;
+package com.maqa.usermanager;
 
 public class UserNotFoundException extends RuntimeException {
     public UserNotFoundException(String message){
